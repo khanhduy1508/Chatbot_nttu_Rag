@@ -3,7 +3,7 @@
 Một chatbot dạng RAG (Retrieval-Augmented Generation) cho mục đích nghiên cứu / demo. Tập trung vào việc kết hợp truy vấn dữ liệu (retrieval) và sinh ngôn ngữ (generation) để cung cấp câu trả lời chính xác hơn dựa trên tài liệu nguồn.
 
 ## Mô tả ngắn
-Dự án này triển khai một chatbot kết hợp bộ nhớ vector / bộ tìm kiếm tài liệu với mô hình ngôn ngữ để trả lời câu hỏi người dùng dựa trên dữ liệu đã được nạp trước. README này là phiên bản cơ bản, không dùng icon, trình bày rõ ràng, dễ đọc và dễ chỉnh sửa.
+Dự án này triển khai một chatbot kết hợp bộ nhớ vector / bộ tìm kiếm tài liệu với mô hình ngôn ngữ để trả lời câu hỏi người dùng dựa trên dữ liệu đã được nạp trước.
 
 ## Tính năng chính
 - Truy vấn tài liệu đã nạp (document retrieval)
@@ -16,61 +16,7 @@ Dự án này triển khai một chatbot kết hợp bộ nhớ vector / bộ t�
 - Một số thư viện phổ biến (ví dụ: numpy, scikit-learn, faiss, transformers) — dựa vào file requirements.txt trong repo
 - Tùy thuộc vào cấu hình: GPU để chạy mô hình lớn nhanh hơn
 
-## Cài đặt nhanh
-1. Clone repository:
-```
-git clone https://github.com/khanhduy1508/Chatbot_nttu_Rag.git
-cd Chatbot_nttu_Rag
-```
 
-2. Tạo môi trường ảo và cài dependencies:
-```
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
-```
-
-Nếu chưa có file `requirements.txt`, hãy tạo hoặc cài theo nhu cầu:
-```
-pip install numpy scikit-learn faiss-cpu transformers
-```
-
-## Cấu hình
-- Kiểm tra/Điền thông tin cấu hình ở file tương ứng (ví dụ `config.py`, `.env` hoặc `settings.json`) nếu repo có.
-- Các thông số cần để cấu hình thường bao gồm:
-  - Đường dẫn tới dữ liệu/tài liệu nguồn
-  - Tham số vector store (kích thước vector, index type)
-  - Thiết lập mô hình (tên model hoặc đường dẫn tới checkpoint)
-  - Cấu hình môi trường (CPU/GPU)
-
-## Cách chạy
-- Chuẩn chạy thử (ví dụ):
-```
-python main.py
-```
-- Nếu có CLI cụ thể:
-```
-python run_chatbot.py --mode interactive
-```
-- Nếu có notebook demo:
-  - Mở `notebooks/demo.ipynb` và chạy từng ô.
-
-Thay `main.py` / `run_chatbot.py` bằng file entrypoint tương ứng trong repo nếu khác.
-
-## Ví dụ sử dụng
-1. Nạp dữ liệu:
-```
-python ingest.py --data ./data --index ./index
-```
-2. Chạy chatbot:
-```
-python chat.py --index ./index
-```
-(Thay tên script bằng thực tế trong repo.)
 
 ## Cấu trúc thư mục gợi ý
 - data/                — nơi chứa tài liệu nguồn
