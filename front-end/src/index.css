@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  /* Simple color tokens (basic blue + white) */
+  --bg-0: #f8fbff; /* very light */
+  --bg-1: #ffffff;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --brand: #2563eb; /* primary blue */
+  --brand-2: #60a5fa; /* lighter blue */
+  --glass: rgba(255,255,255,0.9);
+  --glass-dark: rgba(2,6,23,0.04);
+}
+
+html,body,#root{
+  height:100%;
+}
+
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg-0), var(--bg-1));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Custom scrollbar tuned for dark/light */
+*::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+}
+*::-webkit-scrollbar-track{
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb{
+  background: rgba(37,99,235,0.25);
+  border-radius:999px;
+}
+
+/* Glass card */
+.glass-card{
+  background: var(--glass);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(124,58,237,0.12);
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.glass-card:hover{
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+}
+
+/* Subtle fade-in */
+.fade-in{
+  animation: fadeIn .45s ease both;
+}
+@keyframes fadeIn{
+  from{opacity:0; transform: translateY(6px)}
+  to{opacity:1; transform: translateY(0)}
+}
+
+/* Buttons and accents */
+.btn-primary{
+  background: var(--brand);
+  border: none;
+  color: white;
+}
+.btn-glow{
+  box-shadow: 0 6px 12px rgba(37,99,235,0.06);
+}
+
+/* Message bubbles and rows */
+.msg-row{
+  display:flex;
+  gap:0.75rem;
+  margin-bottom:1rem;
+  align-items:flex-start;
+}
+.msg-row.bot{
+  justify-content:flex-start;
+}
+.msg-row.user{
+  justify-content:flex-end;
+}
+.msg-bubble{
+  padding:0.7rem 0.95rem;
+  border-radius:12px;
+  max-width:78%;
+  line-height:1.45;
+  font-size:0.98rem;
+}
+.msg-bubble-user{
+  background: var(--brand);
+  color: #fff;
+  border-radius:12px;
+}
+.msg-bubble-bot{
+  background: #f3f6fb;
+  color:#0f172a;
+  border-radius:12px;
+}
+.msg-meta{
+  font-size:0.7rem;
+  color:var(--muted);
+  margin-top:0.35rem;
+  text-align:right;
+}
+.avatar{
+  flex:0 0 auto;
+}
+.avatar-img{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:999px;
+  border:2px solid #fff;
+  box-shadow:none;
+}
+
+/* Timestamps */
+.timestamp{
+  font-size:0.65rem;
+  opacity:0.7;
+}
+
+/* Chat card and footer */
+.chat-card{
+  background: #ffffff;           /* <- trắng rõ ràng */
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,0.06); /* border đậm hơn tí cho nổi */
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06); /* nhẹ, nhìn như card nổi lên */
+  display:flex;
+  flex-direction:column;
+  min-height: 60vh;
+  overflow: hidden;
+  padding: 1rem;
+  height: 100%;
+}
+
+.chat-area{
+  padding: 1.25rem 1.5rem 3.75rem; /* more bottom padding so footer can sit outside */
+  overflow:auto;
+  flex:1 1 auto;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: none;
+  min-height: 48vh;
+  border: 1px solid rgba(2,6,23,0.03);
+}
+
+/* Sidebar cards */
+.menu.rounded-card,
+.menu.rounded-card .menu{
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: none;
+  padding:1rem;
+  border:1px solid rgba(2,6,23,0.03);
+}
+
+/* Input pill and send button */
+.chat-footer{
+  background: transparent;
+}
+.input-glass{
+  background: #fff;
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+/* Layout tweaks */
+
+
+/* Make sure message panel doesn't overlap sidebars */
+.chat-wrapper{
+  position:relative;
+}
+.chat-footer{
+  /* sit visually below the inner white panel */
+  border-top: none;
+  margin-top: -2.4rem; /* pull up so pill sits partially outside panel */
+  padding: 1rem 1.5rem 1.25rem;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  background: transparent;
+}
+.input-glass{
+  background: #fff;
+  border-radius: 999px; /* pill */
+  padding:0.8rem 1.25rem;
+  border:1px solid rgba(15,23,42,0.04);
+  width:100%;
+  transition: border-color .12s ease, box-shadow .12s ease, transform .08s ease;
+  max-height: 180px;
+  overflow: auto;
+}
+.input-glass:focus{
+  outline:none;
+  border-color: rgba(37,99,235,0.85);
+  box-shadow: 0 6px 14px rgba(37,99,235,0.06);
+}
+
+/* Overrides for send button and placeholder */
+.chat-footer{
+  position: relative;
+}
+.chat-footer .btn-primary{
+  height: 44px;
+  width: 44px;
+  padding: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 10px;
+  right: 1.25rem;
+  bottom: 0.6rem;
+  box-shadow: none;
+}
+.chat-footer .flex-1{
+  padding-right: 6.25rem;
+}
+.send-btn[disabled],
+.send-btn.disabled{
+  opacity: 0.45;
+  cursor:not-allowed;
+  box-shadow:none;
+  transform:none;
+}
+.input-glass::placeholder{
+  color: #9ca3af;
+  font-size:0.95rem;
+}
+
+/* Prevent side panels from overlapping the centered chat on large screens */
+.chat-wrapper{
+  width:100%;
+  max-width: 980px; /* default centered width */
+  margin: 0 1rem;
+  height: calc(100vh - 6.5rem); /* occupy most of viewport under navbar */
+}
+
+@media (min-width: 1024px){
+  .chat-wrapper{
+    /* Reserve space for left+right sidebars (w-64 each ~=16rem). Keep wrapper centered with margins */
+    margin: 1.5rem 18rem;
+    max-width: calc(100% - 36rem);
+  }
+
+  /* Ensure sidebars sit visually outside the flow and don't get covered by chat card */
+  .drawer-side.absolute{
+    position: absolute;
+    top: 6.5rem; /* align roughly with chat panel top under navbar */
+    transform: none;
+    z-index: 30; /* ensure sidebars are above chat card */
+  }
+
+  *::-webkit-scrollbar-thumb{
+    background: rgba(37,99,235,0.25);
+    border-radius:999px;
+  }
+
+  .chat-card{
+    z-index: 10;
+    position: relative;
+  }
+
+  /* Floating send button overlapping the input */
+  .chat-footer{
+    position: relative;
+  }
+
+  /* Primary button look */
+  .btn-primary{
+    background: var(--brand);
+    border: none;
+    color: white;
+  }
+
+  /* Floating send button */
+  .chat-footer .btn-primary{
+    position: absolute;
+    right: 1.25rem;
+    bottom: 0.9rem;
+    height: 44px;
+    width: 44px;
+    padding: 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 10px; /* flat rounded square */
+    box-shadow: none;
+  }
+
+  .chat-footer .flex-1{
+    padding-right: 5.25rem;
+  }
+
+  .chat-area{
+    padding: 1.25rem 1.5rem 0.75rem;
+    overflow:auto;
+    flex:1 1 auto;
+    background: var(--surface);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+    min-height: 48vh;
+    border: 1px solid rgba(2,6,23,0.03);
+  }
+}
+
+/* Small screens: make chat full width and sidebars hidden already via markup */
+@media (max-width: 1023px){
+  .chat-footer .btn-primary{
+    background:var(--brand);
+    color:#fff;
+    border:none;
+  }
+  .chat-footer .btn-primary:hover{
+    transform:none;
+    box-shadow:none;
+  }
+  .chat-footer .btn-primary:active{
+    transform:none;
+  }
+  .chat-area{
+    min-height: 50vh;
+  }
+  .input-glass{
+    background: #fff;
+    border: 1px solid rgba(37,99,235,0.08);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+}
+
+/* Textarea behavior: allow vertical growth up to a limit, then internal scroll */
+.input-glass{
+  max-height: 180px;
+  overflow: auto;
+}
+
+.btn-lg{
+  padding:0.75rem 1.25rem;
+}
