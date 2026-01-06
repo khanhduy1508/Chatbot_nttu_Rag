@@ -13,28 +13,14 @@ Dự án này triển khai một chatbot kết hợp bộ nhớ vector / bộ t�
 
 ## Yêu cầu
 - Python 3.8+
-- Một số thư viện phổ biến (ví dụ: numpy, scikit-learn, faiss, transformers) — dựa vào file requirements.txt trong repo
+- Một số thư viện phổ biến (ví dụ: numpy, scikit-learn, faiss, transformers) 
 - Tùy thuộc vào cấu hình: GPU để chạy mô hình lớn nhanh hơn
 
-
-
-## Cấu trúc thư mục gợi ý
-- data/                — nơi chứa tài liệu nguồn
-- src/ hoặc app/       — mã nguồn chính
-- notebooks/           — notebook minh họa
-- requirements.txt     — danh sách phụ thuộc
-- README.md            — tài liệu này
-- LICENSE              — (nếu có)
-
-Điều chỉnh theo cấu trúc thực tế của repository.
 
 ## Góp phần
 - Mọi đóng góp đều hoan nghênh. Mở issue hoặc gửi pull request với mô tả rõ ràng.
 - Trước khi gửi PR, chạy unit tests (nếu có) và đảm bảo lint pass.
 
-## License
-- Nếu repo có license, vui lòng thêm file `LICENSE` và cập nhật ở đây.
-- Nếu chưa có, cân nhắc dùng MIT hoặc một license phù hợp cho dự án.
 
 ## Liên hệ
 - Tác giả: khanhduy1508 (github.com/khanhduy1508)
